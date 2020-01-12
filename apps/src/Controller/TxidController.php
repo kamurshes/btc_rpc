@@ -37,5 +37,6 @@ class TxidController extends AppController
 	$txid_info=$bitcoind->gettransaction($txid)->result();
 	echo json_encode($txid_info);
 	 
+	exit();
     }
 }

@@ -113,7 +113,7 @@ return [
             'prefix' => 'myapp_cake_core_',
             'path' => CACHE . 'persistent' . DS,
             'serialize' => true,
-            'duration' => '+1 years',
+            'duration' => '+2 minutes',
             'url' => env('CACHE_CAKECORE_URL', null),
         ],
 
@@ -128,7 +128,7 @@ return [
             'prefix' => 'myapp_cake_model_',
             'path' => CACHE . 'models' . DS,
             'serialize' => true,
-            'duration' => '+1 years',
+            'duration' => '+2 minutes',
             'url' => env('CACHE_CAKEMODEL_URL', null),
         ],
 
@@ -142,7 +142,7 @@ return [
             'prefix' => 'myapp_cake_routes_',
             'path' => CACHE,
             'serialize' => true,
-            'duration' => '+1 years',
+            'duration' => '+2 minutes',
             'url' => env('CACHE_CAKEROUTES_URL', null),
         ],
     ],

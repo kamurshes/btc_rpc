@@ -48,5 +48,6 @@ class QrController extends AppController
 	    );
 	    //echo("url(".(new QRCode)->render($address).")");
 	    //debug((new QRCode)->render($address));
+	    exit();
     }
 }

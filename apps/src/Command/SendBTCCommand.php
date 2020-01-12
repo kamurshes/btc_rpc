@@ -48,12 +48,39 @@ class SendBTCCommand extends Command
             'preserve_case' => false,                  // optional, send method names as defined instead of lowercasing them
         ]);
 	//外部のアドレス
-	$to="3Lz3dQgVj3zWAvntUue3TH5rjYWYpU8N7s";
+	//$to="3Lz3dQgVj3zWAvntUue3TH5rjYWYpU8N7s";
+
+	//井上さんのBTCアドレス
+	$to="1MVy31PwGCYarDi9ZgUHpaDVys87RBVmcL";
+
 	//内部のアドレス
-	$to="37ZD7hu8gcjA7HqCDYmWiXGZBp5CytL9Qv";
-        $amount=0.00045;//$bitcoind->getbalance()->result();
-        $result=$bitcoind->sendtoaddress($to,$amount,"TEST SENDEING 2019-12-21","KSystem")->result();
-        $io->out($result);	    
+	//$to="37ZD7hu8gcjA7HqCDYmWiXGZBp5CytL9Qv";
+        $amount=$bitcoind->getbalance()->result();
+	debug("現在の残高：".$amount." BTC");
+	if($amount>0.05)
+	{
+		debug("残高が0.05以上だったので、手数料を引いて全額送付する");
+		$fees=$bitcoind->estimatesmartfee(1)['feerate'];
+		debug("手数料：".$fees."BTC");
+		$calc_amount=$amount-$fees*2;
+		debug("送付する額面：".$calc_amount);
+		//return;
+	}else{
+		debug($amount);
+		debug("額面に到達していなかったので送付しません");
+		return;
+	}
+
+	try
+	{
+	        $result=$bitcoind->sendtoaddress($to,$calc_amount,"EVISU Mining","K System")->result();
+		$io->out($result);
+	}
+	catch(Exception $e)
+	{
+		debug($e);
+	}
+    
     }
 
 }

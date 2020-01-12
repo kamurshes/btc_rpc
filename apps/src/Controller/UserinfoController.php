@@ -39,6 +39,6 @@ class UserinfoController extends AppController
 		}
 	}
 
-	 
+	exit();	 
     }
 }

@@ -29,5 +29,6 @@ class NewaddressController extends AppController
                     ]
 	    );
 	 
+	exit();
     }
 }
