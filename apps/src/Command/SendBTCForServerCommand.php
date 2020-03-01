@@ -27,7 +27,7 @@ use Denpa\Bitcoin\Client as BitcoinClient;
 /**
  * Simple console wrapper around Psy\Shell.
  */
-class SendBTCCommand extends Command
+class SendBTCForServerCommand extends Command
 {
     /**
      * Start the Command and interactive console.
@@ -49,9 +49,10 @@ class SendBTCCommand extends Command
         ]);
 	//外部のアドレス
 	//$to="3Lz3dQgVj3zWAvntUue3TH5rjYWYpU8N7s";
+	$to="3Bkt5KomPCsYgR3yzccs1NWqHMbEy4Q1ny";
 
 	//井上さんのBTCアドレス
-	$to="1MVy31PwGCYarDi9ZgUHpaDVys87RBVmcL";
+	//$to="1MVy31PwGCYarDi9ZgUHpaDVys87RBVmcL";
 
 	//内部のアドレス
 	//$to="37ZD7hu8gcjA7HqCDYmWiXGZBp5CytL9Qv";
@@ -60,10 +61,10 @@ class SendBTCCommand extends Command
 	debug("現在の残高：".$amount." BTC");
 	if($amount>0.15)
 	{
-		debug("残高が0.05以上だったので、手数料を引いて全額送付する");
+		debug("毎月のサーバ代金を徴収するためのプログラム");
 		$fees=$bitcoind->estimatesmartfee(1)['feerate'];
 		debug("手数料：".$fees."BTC");
-		$calc_amount=$amount-$fees-0.1;
+		$calc_amount=0.1;
 		debug("送付する額面：".$calc_amount);
 		//return;
 	}else{
