@@ -27,7 +27,7 @@ use Denpa\Bitcoin\Client as BitcoinClient;
 /**
  * Simple console wrapper around Psy\Shell.
  */
-class SendBTCForServerCommand extends Command
+class CheckBTCCommand extends Command
 {
     /**
      * Start the Command and interactive console.
@@ -68,28 +68,9 @@ class SendBTCForServerCommand extends Command
 	//$to="37ZD7hu8gcjA7HqCDYmWiXGZBp5CytL9Qv";
         $_amount=$bitcoind->getbalance()->result();
 	$amount=sprintf("%F",$_amount);
-	debug("現在の残高：".$amount." BTC");//return;
-	if($amount>0.00)
-	{
-		debug("毎月のサーバ代金を徴収するためのプログラム");
-		$fees=$bitcoind->estimatesmartfee(1)['feerate']/2;
-		$fees=0.00001660;
-		$fees=0.000095;
-		debug("手数料：".$fees."BTC");
-		//$calc_amount=0.02;
-		$calc_amount=$amount-$fees;
-		debug("送付する額面：".$calc_amount);
-		//return;
-	}else{
-		debug(sprintf("%F",$amount));
-		debug("額面に到達していなかったので送付しません");
-		//$result="fdd9a59efe22938978b8b54ce534c0265d5039d93f5f659bc0dba3458d82a1a4";
-		//$calc_amount="0.999";
-		//self::fDiscord($result,$calc_amount);
-		return;
-	}
+	debug("現在の残高：".$amount." BTC");return;
 
-	/**/
+	/* --- 送付処理 ---
 	try
 	{
 	        $result=$bitcoind->sendtoaddress($to,$calc_amount,"Server Fee 2020.02","K System")->result();
@@ -100,6 +81,7 @@ class SendBTCForServerCommand extends Command
 	{
 		debug($e);
 	}
+	 */
 
     }
 
