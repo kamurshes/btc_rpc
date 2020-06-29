@@ -71,6 +71,8 @@ $routes->scope('/', function (RouteBuilder $builder) {
 
     // QRコードを受け取る関数
     $builder->connect('/qr/*', ['controller' => 'Qr', 'action' => 'index']);
+    // QRコードを受け取る関数
+    $builder->connect('/qr2fa/*', ['controller' => 'Qr2fa', 'action' => 'index']);
     // ユーザーの新規アドレスを作成する関数
     $builder->connect('/newaddress/*', ['controller' => 'Newaddress', 'action' => 'index']);
     // ユーザー情報を取得する関数

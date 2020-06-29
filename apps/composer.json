@@ -10,7 +10,7 @@
         "cakephp/migrations": "3.0.0-beta1",
         "cakephp/plugin-installer": "^1.0",
         "ccxt/ccxt": "^1.20",
-        "chillerlan/php-qrcode": "^3.2",
+        "chillerlan/php-qrcode": "^3.3",
         "denpa/php-bitcoinrpc": "^2.1",
         "linecorp/line-bot-sdk": "^4.1",
         "mobiledetect/mobiledetectlib": "2.*"
