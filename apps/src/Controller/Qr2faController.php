@@ -8,7 +8,7 @@ use chillerlan\QRCode\{QRCode, QROptions};
 class Qr2faController extends AppController
 {
 
-    public function index($secret)
+    public function index($SERVICE_NAME,$MAIL_ADDRESS,$SECRET_KEY,$ISSUER)
     {
 
 
@@ -36,7 +36,9 @@ class Qr2faController extends AppController
 	    $this->viewBuilder()->setLayout('default');
 	    //$data="hogehoge";
 	    // 生のQRコードデータ
-	    $rawqr=(new QRCode)->render($secret);
+	    // OTPに持たせる情報
+	    $OTP="otpauth://totp/".$SERVICE_NAME.":".$MAIL_ADDRESS."?secret=".$SECRET_KEY."&issuer=".$ISSUER;
+	    $rawqr=(new QRCode)->render($OTP);
 	    // Bitcoinプロトコルを載せたQR
 	    echo json_encode(
 		    [
